@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose'
 
-const reviewSchema = new Schema({
+const Review = new Schema({
   clientId: {
     type: Number,
     required: true,
@@ -15,4 +15,4 @@ const reviewSchema = new Schema({
   },
 })
 
-export default model('review', reviewSchema)
+export default Review
