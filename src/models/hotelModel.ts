@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose'
 import Room from './roomSchema.js'
+import Review from './reviewSchema.js'
 
 const hotelSchema = new Schema({
   name: {
@@ -25,7 +26,7 @@ const hotelSchema = new Schema({
     required: true,
   },
   reviews: {
-    type: [Schema.Types.ObjectId],
+    type: [Review],
   },
 })
 
