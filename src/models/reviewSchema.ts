@@ -1,10 +1,9 @@
-import { Schema, model } from 'mongoose'
+import { Schema } from 'mongoose'
 
 const Review = new Schema({
   clientId: {
     type: Number,
     required: true,
-    unique: true,
   },
   mark: {
     type: Number,

@@ -4,7 +4,6 @@ const Room = new Schema({
   number: {
     type: String,
     required: true,
-    unique: true,
   },
   photos: {
     type: [String],
