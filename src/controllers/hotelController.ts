@@ -1,11 +1,13 @@
 import { Request, Response } from 'express'
-import { Hotel } from '../interfaces/hotelInterface.js'
+import { IHotel } from '../interfaces/hotelInterface.js'
 import hotelService from '../services/hotelService.js'
 
 class hotelController {
   async create(req: Request, res: Response) {
     try {
-      const hotel = await hotelService.create(req.body)
+      const hotelData = req.body
+
+      const hotel: IHotel = await hotelService.create(hotelData)
       res.json(hotel)
     } catch (err) {
       console.log(err.message)
@@ -16,7 +18,7 @@ class hotelController {
   async getOne(req: Request, res: Response) {
     try {
       const { hotelId } = req.params
-      const hotel: Hotel = await hotelService.getOne(hotelId)
+      const hotel: IHotel = await hotelService.getOne(hotelId)
 
       res.json(hotel)
     } catch (err) {
@@ -27,7 +29,7 @@ class hotelController {
 
   async getAll(req: Request, res: Response) {
     try {
-      const hotels: Hotel[] = await hotelService.getAll()
+      const hotels: IHotel[] = await hotelService.getAll()
       res.json(hotels)
     } catch (err) {
       console.log(err.message)
@@ -38,8 +40,10 @@ class hotelController {
   async update(req: Request, res: Response) {
     try {
       const { hotelId } = req.params
-      const updatedHotel: Hotel = await hotelService.update(hotelId, req.body)
-      return res.json(updatedHotel)
+      const hotelData = req.body
+
+      const updatedHotel: IHotel = await hotelService.update(hotelId, hotelData)
+      res.json(updatedHotel)
     } catch (err) {
       console.log(err.message)
       res.status(500).json({ message: 'Не удалось обновить информацию об отеле' })
@@ -49,8 +53,7 @@ class hotelController {
   async remove(req: Request, res: Response) {
     try {
       const { hotelId } = req.params
-      const deletedHotel: Hotel = await hotelService.remove(hotelId)
-      return res.json(deletedHotel)
+      await hotelService.remove(hotelId)
     } catch (err) {
       console.log(err.message)
       res.status(500).json({

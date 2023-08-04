@@ -1,6 +1,7 @@
 import { Schema } from 'mongoose'
+import { IReview } from '../interfaces/reviewInterface.js'
 
-const Review = new Schema({
+const Review = new Schema<IReview>({
   clientId: {
     type: Number,
     required: true,

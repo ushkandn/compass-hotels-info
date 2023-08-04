@@ -1,16 +1,15 @@
 import 'dotenv/config'
 import express from 'express'
 import { connect } from 'mongoose'
-import reviewRouter from './routers/reviewRouter.js'
 import hotelRouter from './routers/hotelRouter.js'
+import handleValidationErrors from './utils/handleValidationErrors.js'
 
 const app = express()
 const PORT = process.env.PORT || 7856
 const MONGODB = process.env.MONGODB_URL
 
 app.use(express.json())
-app.use('/', hotelRouter)
-app.use('/', reviewRouter)
+app.use('/hotel', handleValidationErrors, hotelRouter)
 
 connect(MONGODB)
   .then(() => {

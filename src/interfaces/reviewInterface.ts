@@ -1,7 +1,5 @@
-import { Document } from 'mongoose'
-
-export interface Review extends Document {
-  clientId: Number
-  mark: Number
-  comment?: String
+export interface IReview {
+  clientId: number
+  mark: number
+  comment?: string
 }

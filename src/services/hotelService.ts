@@ -1,39 +1,35 @@
 import hotelModel from '../models/hotelModel.js'
-import { Hotel } from '../interfaces/hotelInterface.js'
+import { createHotelDto } from '../dtos/hotelCreate.js'
+import { updateHotelDto } from '../dtos/hotelUpdate.js'
 
 class hotelService {
-  async create(hotel: Hotel) {
-    const createdHotel = await hotelModel.create(hotel)
-    return createdHotel
+  async create(hotel: createHotelDto) {
+    return await hotelModel.create(hotel)
   }
 
-  async getOne(hotelId: String) {
+  async getOne(hotelId: string) {
     if (!hotelId) {
       throw new Error('Такой отель не найден')
     }
-    const findHotelByID = await hotelModel.findById(hotelId).exec()
-    return findHotelByID
+    return await hotelModel.findById(hotelId)
   }
 
   async getAll() {
-    const hotels = await hotelModel.find().exec()
-    return hotels
+    return await hotelModel.find()
   }
 
-  async update(hotelId: String, hotel: Hotel) {
+  async update(hotelId: string, hotel: updateHotelDto) {
     if (!hotelId) {
       throw new Error('Такой отель не найден')
     }
-    const updatedHotel = await hotelModel.findByIdAndUpdate(hotelId, hotel, { new: true })
-    return updatedHotel
+    return await hotelModel.findByIdAndUpdate(hotelId, hotel, { new: true })
   }
 
-  async remove(hotelId: String) {
+  async remove(hotelId: string) {
     if (!hotelId) {
       throw new Error('Такой отель не найден')
     }
-    const deletedHotel = await hotelModel.findByIdAndDelete(hotelId)
-    return deletedHotel
+    await hotelModel.findByIdAndDelete(hotelId)
   }
 }
 
