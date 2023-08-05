@@ -2,7 +2,6 @@ import 'dotenv/config'
 import express from 'express'
 import { connect } from 'mongoose'
 import hotelRouter from './routers/hotelRouter.js'
-import handleValidationErrors from './utils/handleValidationErrors.js'
 
 const app = express()
 const PORT = process.env.PORT || 7856
