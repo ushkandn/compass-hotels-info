@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 7856
 const MONGODB = process.env.MONGODB_URL
 
 app.use(express.json())
-app.use('/hotel', handleValidationErrors, hotelRouter)
+app.use('/api/hotel',  hotelRouter)
 
 connect(MONGODB)
   .then(() => {
