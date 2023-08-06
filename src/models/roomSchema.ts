@@ -1,10 +1,9 @@
 import { Schema } from 'mongoose'
-
-const Room = new Schema({
+import { IRoom } from '../interfaces/roomInterface.js'
+const Room = new Schema<IRoom>({
   number: {
     type: String,
     required: true,
-    unique: true,
   },
   photos: {
     type: [String],

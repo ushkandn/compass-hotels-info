@@ -1,8 +1,9 @@
 import { Schema, model } from 'mongoose'
 import Room from './roomSchema.js'
 import Review from './reviewSchema.js'
+import { IHotel } from '../interfaces/hotelInterface.js'
 
-const hotelSchema = new Schema({
+const hotelSchema = new Schema<IHotel>({
   name: {
     type: String,
     required: true,
