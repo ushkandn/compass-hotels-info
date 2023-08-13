@@ -5,8 +5,8 @@ import reviewService from '../services/reviewService.js'
 class reviewController {
   async create(req: Request, res: Response) {
     try {
-      const reviewData = req.body
       const { hotelId } = req.params
+      const reviewData = req.body
       const createdReview: IReview = await reviewService.create(hotelId, reviewData)
       res.json(createdReview)
     } catch (err) {
@@ -26,8 +26,7 @@ class reviewController {
   }
   async getOne(req: Request, res: Response) {
     try {
-      const { hotelId } = req.params
-      const { reviewId } = req.params
+      const { hotelId, reviewId} = req.params
       const review: IReview = await reviewService.getOne(hotelId, reviewId)
       res.json(review)
     } catch (err) {
@@ -37,8 +36,7 @@ class reviewController {
   }
   async update(req: Request, res: Response) {
     try {
-      const { hotelId } = req.params
-      const { reviewId } = req.params
+      const { hotelId, reviewId} = req.params
       const reviewData = req.body
       const updatedReview: IReview = await reviewService.update(hotelId, reviewId, reviewData)
       res.json(updatedReview)
@@ -49,8 +47,7 @@ class reviewController {
   }
   async remove(req: Request, res: Response) {
     try {
-      const { hotelId } = req.params
-      const { reviewId } = req.params
+      const { hotelId, reviewId} = req.params
       await reviewService.remove(hotelId, reviewId)
       res.json({ message: 'Отзыв об отеле удален' })
     } catch (err) {

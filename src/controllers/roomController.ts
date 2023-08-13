@@ -26,8 +26,7 @@ class roomController {
   }
   async getOne(req: Request, res: Response) {
     try {
-      const { hotelId } = req.params
-      const { roomId } = req.params
+      const { hotelId, roomId } = req.params
       const room = await roomService.getOne(hotelId, roomId)
       res.json(room)
     } catch (err) {
@@ -37,8 +36,7 @@ class roomController {
   }
   async update(req: Request, res: Response) {
     try {
-      const { hotelId } = req.params
-      const { roomId } = req.params
+      const { hotelId, roomId } = req.params
       const roomData = req.body
       const updatedRoom:IRoom = await roomService.update(hotelId, roomId, roomData)
       res.json(updatedRoom)
@@ -49,8 +47,7 @@ class roomController {
   }
   async remove(req: Request, res: Response) {
     try {
-      const { hotelId } = req.params
-      const { roomId } = req.params
+      const { hotelId, roomId } = req.params
       await roomService.remove(hotelId, roomId)
       res.json({ message: 'Информация о комнате отеля удалена' })
     } catch (err) {

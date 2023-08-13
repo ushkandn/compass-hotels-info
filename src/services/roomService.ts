@@ -32,9 +32,8 @@ class roomService {
     }
     const hotel: IHotel = await hotelModel.findById(hotelId)
 
-    const room: IRoom = hotel.rooms.find((room) => room._id.toString() === roomId)
+    return hotel.rooms.find((room) => room._id.toString() === roomId)
 
-    return room
   }
 
   async update(hotelId: string, roomId: string, updatedRoom: updateRoomDto) {
