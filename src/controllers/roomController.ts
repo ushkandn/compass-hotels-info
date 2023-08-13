@@ -1,7 +1,6 @@
 import { Request, Response } from 'express'
 import { IRoom } from '../interfaces/roomInterface.js'
 import roomService from '../services/roomService.js'
-import { updateRoomDto } from '../dtos/roomUpdate.js'
 
 class roomController {
   async create(req: Request, res: Response) {
