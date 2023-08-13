@@ -4,9 +4,7 @@ import hotelModel from '../models/hotelModel.js'
 import { IHotel } from '../interfaces/hotelInterface.js'
 import { IRoom } from '../interfaces/roomInterface.js'
 
-
 class roomService {
-
   async create(hotelId: string, room: createRoomDto) {
     if (!hotelId) {
       throw new Error('Такой отель не найден')
@@ -56,9 +54,9 @@ class roomService {
 
     await hotel.save()
 
-    return updatedRoom
+    return hotel.rooms[roomIndex]
   }
-  
+
   async remove(hotelId: string, roomId: string) {
     if (!hotelId) {
       throw new Error('Такой отель не найден')

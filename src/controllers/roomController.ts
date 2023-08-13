@@ -41,7 +41,7 @@ class roomController {
       const { hotelId } = req.params
       const { roomId } = req.params
       const roomData = req.body
-      const updatedRoom = await roomService.update(hotelId, roomId, roomData)
+      const updatedRoom:IRoom = await roomService.update(hotelId, roomId, roomData)
       res.json(updatedRoom)
     } catch (err) {
       console.log(err.message)
