@@ -6,7 +6,6 @@ class hotelController {
   async create(req: Request, res: Response) {
     try {
       const hotelData = req.body
-
       const hotel: IHotel = await hotelService.create(hotelData)
       res.json(hotel)
     } catch (err) {
@@ -19,7 +18,6 @@ class hotelController {
     try {
       const { hotelId } = req.params
       const hotel: IHotel = await hotelService.getOne(hotelId)
-
       res.json(hotel)
     } catch (err) {
       console.log(err.message)
@@ -41,7 +39,6 @@ class hotelController {
     try {
       const { hotelId } = req.params
       const hotelData = req.body
-
       const updatedHotel: IHotel = await hotelService.update(hotelId, hotelData)
       res.json(updatedHotel)
     } catch (err) {
@@ -54,6 +51,7 @@ class hotelController {
     try {
       const { hotelId } = req.params
       await hotelService.remove(hotelId)
+      res.json({ message: 'Информация об отеле удалена' })
     } catch (err) {
       console.log(err.message)
       res.status(500).json({
